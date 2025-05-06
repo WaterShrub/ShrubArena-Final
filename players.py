@@ -82,7 +82,7 @@ class Player:
             self.name = enemyNames[randint(0, len(enemyNames) - 1)]
             name = self.name
         elif name == '':
-            self.name = str(input(f"\nEnter your name, player {totalPlayers}: ")).strip()
+            self.name = str(input(f"\nEnter your name, player {totalPlayers}: ")).strip().title()
             sleep(0.5)
         else:
             self.name = str(name)
@@ -242,11 +242,16 @@ class Player:
     
     #Checks if a player is applying poison and applies if so
     def isPoisoning(self, defender):
-        if self.poisoning and randint(1,10) < 10 and not defender.blocking:
+        if self.poisoning and ((randint(0,9) > 0 and defender.blocking) or not defender.blocking):
             print(f"{self.name} poisoned {defender.name}!")
             logging.debug(f"{self.name} poisoned {defender.name}")
             defender.poisoned = True
             defender.poisonedTurns = 2
             fn.stringCount = True
+        elif self.poisoning:
+            print(f"{self.name} tried to poison {defender.name}, but they blocked!")
+            logging.debug(f"{self.name} tried to poison {defender.name}, but they blocked!")
+            fn.stringCount = True
+        
 
     
