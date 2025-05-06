@@ -58,90 +58,33 @@ __________________________________
     printBuffer() 
     return
 
-
-
-#Determines who is attacking or blocking
-# and outputs each players health after
-# attack sequence
+#Determines outcomes of player move choices and resets move flags
 def move(player1, player2):
     logging.debug("Starting attack sequence")
+    print()
+
     #Players chose health potions
-    if player1.healing:
-        player1.heal(randint(1,6))
-    if player2.healing:
-        player2.heal(randint(1,6))
+    player1.isDrinkingPotion()
+    player2.isDrinkingPotion()
 
     #Players chose to poison
-    if player1.poisoning and randint(1,10) < 10 and not player2.blocking:
-        print(f"{player1.name} poisoned {player2.name}!")
-        logging.debug(f"{player1.name} poisoned {player2.name}")
-        player2.poisoned = True
-        player2.poisonedTurns = 2
-        
-    if player2.poisoning and randint(1,10) < 10 and not player1.blocking:
-        print(f"{player2.name} poisoned {player1.name}!")
-        logging.debug(f"{player2.name} poisoned {player1.name}")
-        player1.poisoned = True
-        player1.poisonedTurns = 2
-
-    #Poison damage
-    if player1.poisoned:
-        print(f"{player1.name} is poisoned!")
-        player1.damage()
-        player1.poisonedTurns -= 1
-        if player1.poisonedTurns == 0:
-            player1.poisoned = False
-            print(f"{player1.name} is no longer poisoned!")
-            logging.debug(f"{player1.name} is no longer poisoned!")
-    if player2.poisoned:
-        print(f"{player2.name} is poisoned!")
-        player2.damage()
-        player2.poisonedTurns -= 1
-        if player2.poisonedTurns == 0:
-            player2.poisoned = False
-            print(f"{player2.name} is no longer poisoned!")
-            logging.debug(f"{player2.name} is no longer poisoned!")
+    player1.isPoisoning(player2)
+    player2.isPoisoning(player1)
+    player1.poisonDamage()
+    player2.poisonDamage()
 
     #Both platers attack
     if player1.attacking and player2.attacking:
         print(f"{player1.name} and {player2.name} attacked each other!")
-
-        #Both players have same speed and player2 is a bot
-        if player1.weapon['speed'] == player2.weapon['speed'] and \
-            player2.bot == True:
-            if randint(0,9) < 6:
-                attack(player1, player2)
-                attack(player2, player1)
-            else:
-                attack(player2, player1)
-                attack(player1, player2)
-
-        #Both players have same speed
-        elif player1.weapon['speed'] == player2.weapon['speed']:
-            if randint(0,9) < 5:
-                attack(player1, player2)
-                attack(player2, player1)
-            else:
-                attack(player2, player1)
-                attack(player1, player2)
-        
-        #Player1 has a faster speed
-        elif player1.weapon['speed'] > player2.weapon['speed']:
-            attack(player1, player2)
-            attack(player2, player1)
-
-        #Player2 has a faster speed
-        else:
-            attack(player2, player1)
-            attack(player1, player2)
+        determineOrder(player1, player2)
 
     #Player1 attacks, player2 blocks/heals
-    elif player1.attacking and not player2.attacking:
+    elif player1.attacking:
         print(f"{player1.name} attacked {player2.name}!")
         attack(player1, player2)
 
     #Only enemy attacks
-    elif player2.attacking and not player1.attacking:
+    elif player2.attacking:
         print(f"{player2.name} attacked {player1.name}!")
         attack(player2, player1)
 
@@ -157,16 +100,39 @@ def move(player1, player2):
     sleep(1.2)
 
     #Reset move flags
-    player1.attacking = False
-    player2.attacking = False
-    player1.blocking = False
-    player2.blocking = False
-    player1.healing = False
-    player2.healing = False
+    player1.resetPlayerFlags()
+    player2.resetPlayerFlags()
     return
 
-#Deals damage to defender based on attackers weapon.
-# if defended is blocking, unsets the block flag and ends
+#Determines the order of attack based on weapon speed and calls attack
+def determineOrder(player1, player2):
+    if player1.weapon['speed'] == player2.weapon['speed']:
+        chance = randint(0,9)
+        if player2.bot:
+            if chance < 6:
+                first = player1
+                second = player2
+            else:
+                first = player2
+                second = player1
+        else:
+            if chance < 5:
+                first = player1
+                second = player2
+            else:
+                first = player2
+                second = player1
+    elif player1.weapon['speed'] > player2.weapon['speed']:
+        first = player1
+        second = player2
+    else:
+        first = player2
+        second = player1
+
+    attack(first, second)
+    attack(second, first)
+
+#Deals damage to defender based on attackers weapon and defenders blocking state
 def attack(attacker, defender):
     if not defender.isDead():
         blockChance = randint(1,5)
@@ -190,6 +156,8 @@ def attack(attacker, defender):
 
         #No block, deals full damage
         else:
+            defender.damage(attacker.weapon['damage'])
+        if attacker.weapon['name'] == 'dagger':
             defender.damage(attacker.weapon['damage'])
     return
 

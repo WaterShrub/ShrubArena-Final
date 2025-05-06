@@ -2,7 +2,7 @@
 
 INF360 - Programming in Python
 
-Midterm
+Final
 
 The goal of the game is to defeat your opponent in combat.
     To do this, you will both select a weapon and fight each other.
@@ -47,7 +47,7 @@ try:
     fn.printManual()
     sleep(0.3)
 
-    #Define players here
+    #Initialize player 1
     logging.debug("Creating player 1")
     player1 = pl.Player()
     sleep(0.2)
@@ -56,15 +56,20 @@ try:
     logging.debug("Starting game with new player")
     playGame = True
     while playGame:
-        player2Chocie = input(
-                            "\nWould you like to play againtst:\n" \
-                            "1) A computer\n" \
-                            "2) Another human\n").strip()
-        sleep(0.5)
+        #initiallize player2
+        if not player1.bot:
+            player2Choice = input(
+                              "\nWould you like to play againtst:\n" \
+                               "1) A computer\n" \
+                               "2) Another human\n").strip()
+            sleep(0.5)
+        else:
+            logging.debug("Battle will be bots only")
+            player2Choice = '1'
 
         logging.debug("Creating player 2")
-        if player2Chocie == '1':
-            player2 = pl.Player(pl.enemyNames[randint(0, len(pl.enemyNames) - 1)], True)
+        if player2Choice == '1':
+            player2 = pl.Player(bot = True)
             print(f"{player1.name}, your enemy is {player2.name}.\n")
         else:
             player2 = pl.Player()
@@ -116,11 +121,11 @@ try:
                 print(f"Welcome Back to the Shrub Arena, {player1.name}!")
                 print("___________________________")
                 sleep(1)
-                player1.weaponSelect()
-                player1.health = pl.PLAYER_START_HEALTH
+
+                #Reset player1 variables
+                player1.resetPlayer()
                 if player1.replay == '1':
-                    player2.health = pl.PLAYER_START_HEALTH
-                    player2.weaponSelect()
+                    player2.resetPlayer()
                 else:
                     pl.totalPlayers -= 1
 
