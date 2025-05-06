@@ -1,3 +1,4 @@
+#Player class for Shrub Arena
 import logging
 logging.basicConfig(filename='ShrubArena.log', 
                     level=logging.DEBUG, 

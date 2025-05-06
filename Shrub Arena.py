@@ -142,5 +142,5 @@ except KeyboardInterrupt:
     exit()
 except Exception as e:
     print(f"Unexpected error: {e}.\nExiting game.")
-    logging.debug(f"Unexpected error: {e}.\nExiting game.")
+    logging.critical(f"Unexpected error: {e}.\nExiting game.")
     exit()
