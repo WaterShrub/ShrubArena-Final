@@ -125,26 +125,14 @@ try:
                     pl.totalPlayers -= 1
 
     #End game
-    if player1.wins > 1:
-        print(f"Congrats, {player1.name}, on the {player1.wins} wins!")
-    elif player1.wins == 1:
-        print(f"Congrats on the win, {player1.name}!")
-    print("\nThank you for playing.")
-    logging.debug("Player exited game")
-    exit()
+    fn.gameEnd(player1)
 except KeyboardInterrupt:
     print()
     try:
-        if player1.wins and player1.wins > 1:
-            print(f"Congrats, {player1.name}, on the {player1.wins} wins!")
-        elif player1.wins and player1.wins == 1:
-            print(f"Congrats on the win, {player1.name}!")
-        print("\nThank you for playing.")
-        logging.debug("Player exited game")
-        exit()
+        fn.gameEnd(player1)
     except NameError:
         print("Game interrupted before player was created.")
-        logging.debug("Game interrupted before player was created.")
+        logging.info("Game interrupted before player was created.")
         exit()
 except Exception as e:
     print()

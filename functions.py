@@ -211,3 +211,12 @@ def determineWinner(player1, player2):
     sleep(1)
     logging.debug(f"Winner: {winner.name}")
     winner.wins += 1
+
+def gameEnd(player1):
+    if player1.wins > 1:
+        print(f"Congrats, {player1.name}, on the {player1.wins} wins!")
+    elif player1.wins == 1:
+        print(f"Congrats on the win, {player1.name}!")
+    print("\nThank you for playing.")
+    logging.info("Player exited game")
+    exit()
