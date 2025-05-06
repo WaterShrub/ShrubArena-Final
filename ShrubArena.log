@@ -32,3 +32,121 @@ Player 2: A chocolate chip - 13 health
 Player 1: Test - 4 health
 Player 2: Dev - 0 health
 
+2025-05-05 20:43:06,329 - DEBUG - Starting main game loop
+2025-05-05 20:43:06,329 - DEBUG - Creating players
+2025-05-05 20:44:18,173 - DEBUG - Starting main game loop
+2025-05-05 20:44:18,174 - DEBUG - Creating players
+2025-05-05 20:44:44,419 - DEBUG - Starting main game loop
+2025-05-05 20:44:44,419 - DEBUG - Creating players
+2025-05-05 20:44:52,834 - DEBUG - Selecting weapons
+2025-05-05 20:44:55,473 - DEBUG - Justin chose the sword
+2025-05-05 20:44:55,474 - DEBUG - Bob chose the axe
+2025-05-05 20:48:14,152 - DEBUG - Starting main game loop
+2025-05-05 20:48:14,152 - DEBUG - Creating players
+2025-05-05 20:48:19,743 - DEBUG - Creating bot player: Dev
+2025-05-05 20:48:19,744 - DEBUG - Dev chose the sword
+2025-05-05 20:48:19,744 - DEBUG - Selecting weapons
+2025-05-05 20:50:28,242 - DEBUG - Starting main game loop
+2025-05-05 20:50:28,242 - DEBUG - Creating players
+2025-05-05 20:51:03,797 - DEBUG - Starting main game loop
+2025-05-05 20:51:03,797 - DEBUG - Creating players
+2025-05-05 20:51:18,099 - DEBUG - Starting main game loop
+2025-05-05 20:51:18,099 - DEBUG - Creating players
+2025-05-05 20:51:25,208 - DEBUG - Selecting weapons
+2025-05-05 20:51:48,710 - DEBUG - Justin chose the sword
+2025-05-05 20:52:18,367 - DEBUG - Starting main game loop
+2025-05-05 20:52:18,367 - DEBUG - Creating players
+2025-05-05 20:52:22,770 - DEBUG - Selecting weapons
+2025-05-05 20:52:44,625 - DEBUG - Starting main game loop
+2025-05-05 20:52:44,625 - DEBUG - Creating players
+2025-05-05 20:53:56,863 - DEBUG - Starting main game loop
+2025-05-05 20:53:56,863 - DEBUG - Creating players
+2025-05-05 20:54:05,528 - DEBUG - Selecting weapons
+2025-05-05 20:54:35,767 - DEBUG - Starting main game loop
+2025-05-05 20:54:35,767 - DEBUG - Creating players
+2025-05-05 20:55:03,934 - DEBUG - Starting main game loop
+2025-05-05 20:55:03,934 - DEBUG - Creating players
+2025-05-05 20:55:16,184 - DEBUG - Starting main game loop
+2025-05-05 20:55:16,184 - DEBUG - Creating players
+2025-05-05 20:55:51,911 - DEBUG - Starting main game loop
+2025-05-05 20:55:51,911 - DEBUG - Creating players
+2025-05-05 20:56:02,490 - DEBUG - Selecting weapons
+2025-05-05 20:56:41,764 - DEBUG - Starting main game loop
+2025-05-05 20:56:41,764 - DEBUG - Creating players
+2025-05-05 20:56:53,028 - DEBUG - Starting main game loop
+2025-05-05 20:56:53,028 - DEBUG - Creating players
+2025-05-05 20:57:13,148 - DEBUG - Starting main game loop
+2025-05-05 20:57:13,148 - DEBUG - Creating players
+2025-05-05 20:57:19,223 - DEBUG - Selecting weapons
+2025-05-05 20:57:33,266 - DEBUG - Starting main game loop
+2025-05-05 20:57:33,266 - DEBUG - Creating players
+2025-05-05 20:57:39,463 - DEBUG - Selecting weapons
+2025-05-05 20:57:44,489 - DEBUG - JB chose the sword
+2025-05-05 20:57:47,941 - DEBUG - MB chose the axe
+2025-05-05 20:58:01,560 - DEBUG - Starting main game loop
+2025-05-05 20:58:01,560 - DEBUG - Creating players
+2025-05-05 20:58:07,047 - DEBUG - Selecting weapons
+2025-05-05 20:58:53,782 - DEBUG - Starting main game loop
+2025-05-05 20:58:53,782 - DEBUG - Creating players
+2025-05-05 20:59:00,342 - DEBUG - Selecting weapons
+2025-05-05 20:59:04,353 - DEBUG - JB chose the axe
+2025-05-05 20:59:05,853 - DEBUG - MB chose the sword
+2025-05-05 21:00:23,214 - DEBUG - Starting main game loop
+2025-05-05 21:00:23,214 - DEBUG - Creating players
+2025-05-05 21:00:33,419 - DEBUG - Selecting weapons
+2025-05-05 21:00:37,773 - DEBUG - 1 chose the sword
+2025-05-05 21:00:39,447 - DEBUG - 22 chose the axe
+2025-05-05 21:00:39,447 - DEBUG - 1 chose the sword
+2025-05-05 21:00:39,447 - DEBUG - 22 chose the axe
+2025-05-05 21:01:30,943 - DEBUG - Starting main game loop
+2025-05-05 21:01:30,943 - DEBUG - Creating players
+2025-05-05 21:01:39,177 - DEBUG - Selecting weapons
+2025-05-05 21:01:43,940 - DEBUG - Justin chose the sword
+2025-05-05 21:01:43,940 - DEBUG - Monica chose the axe
+2025-05-05 21:02:30,029 - DEBUG - Starting main game loop
+2025-05-05 21:02:30,029 - DEBUG - Creating players
+2025-05-05 21:02:35,790 - DEBUG - Selecting weapons
+2025-05-05 21:02:40,913 - DEBUG - Justin chose the sword
+2025-05-05 21:02:40,913 - DEBUG - Monica chose the axe
+2025-05-05 21:04:24,461 - DEBUG - Starting main game loop
+2025-05-05 21:04:24,461 - DEBUG - Creating players
+2025-05-05 21:05:55,329 - DEBUG - Starting main game loop
+2025-05-05 21:05:55,329 - DEBUG - Creating players
+2025-05-05 21:06:04,851 - DEBUG - Justin chose the sword
+2025-05-05 21:06:04,851 - DEBUG - Monica chose the axe
+2025-05-05 21:06:17,613 - DEBUG - Justin chose Attack
+2025-05-05 21:06:17,613 - DEBUG - Monica chose Block
+2025-05-05 21:06:17,613 - DEBUG - Starting attack sequence
+2025-05-05 21:07:14,310 - DEBUG - Starting main game loop
+2025-05-05 21:07:14,310 - DEBUG - Creating players
+2025-05-05 21:07:46,388 - DEBUG - Justin chose the axe
+2025-05-05 21:07:46,388 - DEBUG - Monica chose the sword
+2025-05-05 21:07:49,999 - DEBUG - Justin chose Attack
+2025-05-05 21:07:51,883 - DEBUG - Monica chose Block
+2025-05-05 21:07:51,883 - DEBUG - Starting attack sequence
+2025-05-05 21:11:25,418 - DEBUG - Starting main game loop
+2025-05-05 21:11:25,418 - DEBUG - Creating players
+2025-05-05 21:12:11,202 - DEBUG - Starting main game loop
+2025-05-05 21:12:11,202 - DEBUG - Creating players
+2025-05-05 21:12:34,641 - DEBUG - Justin chose the axe
+2025-05-05 21:12:34,641 - DEBUG - Mona chose the sword
+2025-05-05 21:13:09,586 - DEBUG - Starting main game loop
+2025-05-05 21:13:09,586 - DEBUG - Creating players
+2025-05-05 21:14:38,017 - DEBUG - Starting main game loop
+2025-05-05 21:14:38,017 - DEBUG - Creating players
+2025-05-05 21:16:05,842 - DEBUG - Starting main game loop
+2025-05-05 21:16:05,842 - DEBUG - Creating players
+2025-05-05 21:16:24,433 - DEBUG - Justin chose the sword
+2025-05-05 21:16:24,433 - DEBUG - Justin Too chose the sword
+2025-05-05 21:18:20,205 - DEBUG - Starting main game loop
+2025-05-05 21:18:20,205 - DEBUG - Creating players
+2025-05-05 21:18:33,783 - DEBUG - Justin chose the sword
+2025-05-05 21:18:33,785 - DEBUG - Justin chose the axe
+2025-05-05 21:19:33,992 - DEBUG - Starting main game loop
+2025-05-05 21:19:33,992 - DEBUG - Creating players
+2025-05-05 21:19:44,890 - DEBUG - 1 chose the sword
+2025-05-05 21:19:44,891 - DEBUG - 2 chose the axe
+2025-05-05 21:19:49,156 - DEBUG - 1 chose Attack
+2025-05-05 21:19:51,900 - DEBUG - 2 chose Attack
+2025-05-05 21:19:51,901 - DEBUG - Starting attack sequence
+2025-05-05 21:20:38,021 - DEBUG - Starting main game loop

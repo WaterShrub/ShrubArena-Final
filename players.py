@@ -1,11 +1,21 @@
+import logging
+logging.basicConfig(filename='ShrubArena.log', 
+                    level=logging.DEBUG, 
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+from random import randint
+from time import sleep
+from getpass import getpass
+
+#Game constants/variables
+PLAYER_START_HEALTH = 25
+PLAYER_MAX_HEALTH = int(PLAYER_START_HEALTH * 1.2)
+
 enemyNames = ("Bob", "Leonidas", "Boss-man", "One-eyed Duck", "Calzoni", 
               "Nebula", "Cymbal Monkey", "AIDAN", "&$!'@$#", "Nemo",
               "Dev", "Crabcake", "a Slice of 'za", "Your future self",
               "Err-or!", "A chocolate chip", "The Doors", "ENEMY_NAME")
-
-#Game constants
-PLAYER_START_HEALTH = 25
-PLAYER_MAX_HEALTH = int(PLAYER_START_HEALTH * 1.2)
+playerNames = []
+totalPlayers = 0
 
 #Enter new weapons below this line:
 
@@ -23,18 +33,40 @@ MOVES = {'1' : 'Attack',
          '3' : 'Potion'}
 
 class Player:
-    def  __init__(self, name, bot = False):
+    def  __init__(self, name = '', bot = False):
+        global totalPlayers
+        totalPlayers += 1  
+
         if str(name).islower():
-            name = str(name).title()
-        self.name = str(name) 
+            name = str(name).title() 
+        if name == '':
+            self.name = input(f"\nEnter your name, player {totalPlayers}: ").strip()
+            sleep(0.5)
+        else:
+            self.name = str(name)
+        if self.name in playerNames:
+            print(f"Name already taken. Please choose another name.")
+            self.name = input(f"\nEnter your name, player {totalPlayers}: ").strip()
+            sleep(0.5)
+        playerNames.append(self.name)
+
         self.bot = bot
-        self.weapon = {}
+        if self.bot:
+            self.weapon = self.weaponSelect(str(randint(1,len(WEAPONS))))
+        else:
+            self.weapon = self.weaponSelect()
         self.health = PLAYER_START_HEALTH
         self.maxHealth = PLAYER_MAX_HEALTH 
+        self.wins = 0
+
+        #Move flags
         self.attacking = False
         self.blocking = False
         self.healing = False
-        self.wins = 0
+
+        if not bot:
+            print(f"Welcome, {self.name}!")
+        logging.debug(f"{self.name} has been created.")
 
     #weaponSelect asks player to choose a weapon and stores 
     # the choice in the player dictionary. If the player
@@ -46,27 +78,24 @@ class Player:
 
         #Default selection, requests choice from terminal
         if weaponSelection not in WEAPONS:
-            print("Select a weapon:")
+            print(f"\n{self.name}, select your weapon: \n"\
+                  "**Choices hidden for privacy in 2-player situations.")
             for number, weapon in WEAPONS.items():
                 print(f"{number}) {str(weapon['name']).title()} - {weapon['damage']} damage and {weapon['speed']} speed")
-            weaponSelection = input().strip()
+            weaponSelection = getpass("").strip()
 
         while weaponSelection not in WEAPONS:
             print("Invalid input.")
-            weaponSelection = input("Please enter the number corresponding to your weapon choice: ").strip()
+            weaponSelection = getpass("Please enter the number corresponding to your weapon choice: ").strip()
+        sleep(0.5)
 
-        self.weapon = WEAPONS[weaponSelection]
-        print(f"\n{self.name} chose the {self.weapon['name']}.")
-        return
+        logging.debug(f"{self.name} chose the {WEAPONS[weaponSelection]['name']}")
+        return WEAPONS[weaponSelection]
 
     #Checks if player is alive or dead.
     def isDead(self):
+        logging.debug(f"Checked if {self.name} is dead.")
         return self.health <= 0
-   
-   #Sets the value of the 'blocking' key to True for the blocker
-    def block(self):
-        self.blocking = True
-        return
    
    #Requests input from the player to determine their next move.
     #If the player already knows their choice, they can supply 
@@ -77,15 +106,16 @@ class Player:
 
         #Default selection, requests choice from terminal
         if choice not in MOVES:
-            print("Choose your next move:")
+            print(f"{self.name}, choose your next move:\n"\
+                  "**Choices hidden for privacy in 2-player situations.")
             for number, move in MOVES.items():
                 print(f"{number}) {move}")
-            choice = input().strip()
+            choice = str(getpass("").strip())
             print()
 
         while choice not in MOVES:
             print("Invalid input.")
-            choice = input("Please enter the number corresponding to your move choice: ").strip()
+            choice = getpass("Please enter the number corresponding to your move choice: ").strip()
 
         if str(choice) == '1':
             self.attacking = True
@@ -93,3 +123,44 @@ class Player:
             self.blocking = True
         elif str(choice) == '3':
             self.healing = True
+
+        logging.debug(f"{self.name} chose {MOVES[choice]}")
+        return
+    
+    #Verifies that player has legal health value.
+    def checkHealth(self):
+        if self.health > self.maxHealth:
+            self.health = self.maxHealth
+        if self.health < 0:
+            self.health = 0
+        logging.debug(f"Checked {self.name} for legal health values.")
+        return
+    
+    #Heals player based on supplied amount. Defaults a random value between 2 and 4.
+    def heal(self, amount = randint(2,4)):
+        self.health += amount
+        print(f"{self.name} healed for {amount} health!")
+        logging.debug(f"{self.name} healed for {amount} health!")
+        self.checkHealth()
+
+    #Damages player based on supplied amount. Defaults a random value between 1 and 3.
+    def damage(self, amount = randint(1,3)):
+        self.health -= amount
+        print(f"{self.name} took {amount} damage!")
+        logging.debug(f"{self.name} took {amount} damage!")
+        self.checkHealth()
+
+    #Asks user if they would like to replay.
+    #Returns int choice
+    def replayChoice():
+        CHOICES = {'1' : 'Play again vs same enemy', 
+                    '2' : 'Play again vs new enemy',
+                    '3' : 'Exit'}
+        print("Would you like to:")
+        for number, choice in MOVES.items():
+                print(f"{number}) {choice}")
+        choice = input().strip()
+        while choice not in CHOICES:
+            print("Invalid input.")
+            choice = input("Please enter the number corresponding to your choice: ").strip()
+        return choice

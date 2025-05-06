@@ -25,14 +25,12 @@ logging.basicConfig(filename='ShrubArena.log',
 from time import sleep
 from random import randint
 from sys import exit
-
 try:
     import functions as fn
 except:
     logging.critical("Missing function.py")
     print("Missing functions.py")
     exit()
-
 try:
     import players as pl
 except:
@@ -40,63 +38,81 @@ except:
     print("Missing players.py")
     exit()
 
-#Game variables
-playGame = True
-
-
 #Exits on unpredicted errors
 try:
     #Intro
     fn.clearScreen()
     print("Welcome to the Shrub Arena!")
     print("___________________________")
-    playerName = str(input("What should we call you? : "))
-    if playerName == "":
-        playerName = "Player"
     fn.printManual()
     sleep(0.3)
 
-    #Main Game Loop
-    logging.debug("Starting main game loop")
-    while playGame:
-        
-        #Define players here
-        logging.debug("Creating players")
-        player1 = pl.Player(playerName)
-        player2 = pl.Player(pl.enemyNames[randint(0, len(pl.enemyNames) - 1)], True)
-        print(f"Hello, {player1.name}! Your enemy is {player2.name}.\n")
+    #Define players here
+    logging.debug("Creating player 1")
+    player1 = pl.Player()
+    sleep(0.2)
 
-        #Weapon selections
-        logging.debug("Selecting weapons")
-        player1.weaponSelect()
-        player2.weaponSelect(str(randint(1,len(pl.WEAPONS))))
+    #Starts game with new second player
+    logging.debug("Starting game with new player")
+    playGame = True
+    while playGame:
+        player2Chocie = input(
+                            "\nWould you like to play againtst:\n" \
+                            "1) A computer\n" \
+                            "2) Another human\n").strip()
+        sleep(0.5)
+
+        logging.debug("Creating player 2")
+        if player2Chocie == '1':
+            player2 = pl.Player(pl.enemyNames[randint(0, len(pl.enemyNames) - 1)], True)
+            print(f"Hello, {player1.name}! Your enemy is {player2.name}.\n")
+        else:
+            player2 = pl.Player()
+            sleep(0.2)
+
+        print(f"\n{player1.name} chose the {player1.weapon['name']}.")
+        print(f"{player2.name} chose the {player2.weapon['name']}.")
         sleep(1)
 
-        #Play until a players health <= 0
-        print(f"All players are starting with {pl.PLAYER_START_HEALTH} health.")
-        print("*-" * 10 + "*")
-        while not player1.isDead() and not player2.isDead():
-            player1Move = player1.moveSelect()
-            player2Move = player2.moveSelect(str(randint(1,2)))
+        #Main Game Loop
+        logging.debug("Starting main game loop")
+        playGameCurrentPlayers = True
+        while playGameCurrentPlayers:
+            #Play until a players health <= 0
+            print(f"\nAll players are starting with {pl.PLAYER_START_HEALTH} health.")
+            print("*-" * 10 + "*")
+            while not player1.isDead() and not player2.isDead():
+                player1Move = player1.moveSelect()
+                
+                if player2.bot:
+                    player2Move = player2.moveSelect(str(randint(1,len(pl.MOVES))))
+                else:
+                    player2Move = player2.moveSelect()
 
-            fn.attack(player1, player1Move, player2, player2Move)
+                fn.move(player1, player2)
 
-        #Determine winner
-        fn.determineWinner(player1, player2)
-        logging.debug("Winner determined\n" \
-                f"Player 1: {player1.name} - {player1.health} health\n" \
-                f"Player 2: {player2.name} - {player2.health} health\n")
-        #Display wins and ask to replay
-        print(f"\nYour total wins: {player1.wins}")
-        replay = fn.replayChoice()
+            #Determine winner
+            logging.debug("Determining winner")
+            fn.determineWinner(player1, player2)
+            logging.debug("Winner determined")
 
-        if replay == 'n':
-            playGame = False
-        else:
-            fn.clearScreen()
-            print(f"Welcome Back to the Shrub Arena, {player1.name}!")
-            print("___________________________")
-            sleep(1)
+            #Display wins and ask to replay
+            print(f"\nYour total wins: {player1.wins}")
+            replay = fn.replayChoice()
+
+            if replay == '3':
+                playGame = False
+            else:
+                if replay == '2':
+                    logging.debug("Replaying with new player")
+                    playGameCurrentPlayers = False
+                else:
+                    logging.debug("Replaying with same players")
+                fn.clearScreen()
+                print(f"Welcome Back to the Shrub Arena, {player1.name}!")
+                print("___________________________")
+                sleep(1)
+                player1.weaponSelect()
 
     #End game
     if player1.wins > 1:
@@ -104,6 +120,7 @@ try:
     elif player1.wins == 1:
         print(f"Congrats on the win, {player1.name}!")
     print("\nThank you for playing.")
+    logging.debug("Player exited game")
     exit()
 except KeyboardInterrupt:
     if player1.wins > 1:
@@ -111,7 +128,9 @@ except KeyboardInterrupt:
     elif player1.wins == 1:
         print(f"Congrats on the win, {player1.name}!")
     print("\nThank you for playing.")
+    logging.debug("Player exited game")
     exit()
 except Exception as e:
     print(f"Unexpected error: {e}.\nExiting game.")
+    logging.debug(f"Unexpected error: {e}.\nExiting game.")
     exit()
