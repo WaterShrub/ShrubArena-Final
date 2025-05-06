@@ -20,7 +20,8 @@ PLAYER_MAX_HEALTH = int(PLAYER_START_HEALTH * 1.2)
 enemyNames = ("Bob", "Leonidas", "Boss-man", "One-eyed Duck", "Calzoni", 
               "Nebula", "Cymbal Monkey", "AIDAN", "&$!'@$#", "Nemo",
               "Dev", "Crabcake", "a Slice of 'za", "Your future self",
-              "Err-or!", "A chocolate chip", "The Doors", "ENEMY_NAME")
+              "Err-or!", "A chocolate chip", "The Doors", "ENEMY_NAME",
+              "Aluben", "Leahcim")
 playerNames = []
 totalPlayers = 0
 
