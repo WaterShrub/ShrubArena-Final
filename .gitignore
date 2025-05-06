@@ -1,1 +1,2 @@
-ShrubArena.log
+*.log
+__pycache__/
