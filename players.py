@@ -35,8 +35,7 @@ WEAPON_AXE = {'name' : 'axe',
               'speed' : 4}
 WEAPON_GREATAXE = {'name' : 'great axe',
                   'damage' : 10, 
-                  'speed' : 2,
-                  'cooldown': False}
+                  'speed' : 2}
 WEAPONS = {'1' : WEAPON_SWORD, 
            '2' : WEAPON_AXE,
            '3' : WEAPON_DAGGER,
@@ -54,6 +53,7 @@ class Player:
         self.bot = bot
         self.wins = 0
         self.replay = '3'
+        self.cooldown =False
 
         #Defines self.name
         self.namePlayer(name)
@@ -135,9 +135,9 @@ class Player:
         global MOVES
 
         #Requests choice from terminal if not bot
-        if self.weapon['name'] == 'great axe' and self.weapon['cooldown']:
+        if self.cooldown:
             choice = '2'
-            self.weapon['cooldown'] = False
+            self.cooldown = False
             print(f"{self.name}, your weapon is on cooldown. You must block.")
             logging.debug(f"{self.name} is on cooldown. Blocking.")
         elif not self.bot:
@@ -159,7 +159,7 @@ class Player:
             case '1':
                 self.attacking = True
                 if self.weapon['name'] == 'great axe':
-                    self.weapon['cooldown'] = True
+                    self.cooldown = True
                     logging.debug(f"{self.name} is now on cooldown.")
             case '2':
                 self.blocking = True
@@ -226,10 +226,10 @@ class Player:
     def isDrinkingPotion(self):
         if self.healing:
             self.heal(randint(2,6))
-        if randint(1,4) == 1 and self.poisoned:
-            self.poisoned = False
-            print(f"{self.name} drank a health potion and is no longer poisoned!")
-            logging.debug(f"{self.name} drank a health potion and is no longer poisoned!")
+            if randint(1,4) == 1 and self.poisoned:
+                self.poisoned = False
+                print(f"{self.name} drank a health potion and is no longer poisoned!")
+                logging.debug(f"{self.name} drank a health potion and is no longer poisoned!")
     
     #Checks if a player is applying poison and applies if so
     def isPoisoning(self, defender):
