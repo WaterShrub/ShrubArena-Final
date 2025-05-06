@@ -82,15 +82,20 @@ def move(player1, player2):
     logging.debug("Starting attack sequence")
     print()
 
-    #Players chose health potions
-    player1.isDrinkingPotion()
-    player2.isDrinkingPotion()
-
     #Players chose to poison
     player1.isPoisoning(player2)
     player2.isPoisoning(player1)
+    print()
+
+    #Players chose health potions
+    player1.isDrinkingPotion()
+    player2.isDrinkingPotion()
+    print()
+
+    #Poison damage is applied
     player1.poisonDamage()
     player2.poisonDamage()
+    print()
 
     #Both platers attack
     if player1.attacking and player2.attacking:
@@ -149,8 +154,10 @@ def determineOrder(player1, player2):
         second = player1
 
     attack(first, second)
+    print()
     attack(second, first)
-
+    print()
+    
 #Deals damage to defender based on attackers weapon and defenders blocking state
 def attack(attacker, defender):
     if not defender.isDead():
