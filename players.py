@@ -71,16 +71,15 @@ class Player:
     def namePlayer(self, name = ''):
         if str(name).islower():
             name = str(name).title() 
+        if name == 'PLAYER1-BOT':
+            self.bot = True
         if self.bot:
             self.name = enemyNames[randint(0, len(enemyNames) - 1)]
         elif name == '':
-            self.name = input(f"\nEnter your name, player {totalPlayers}: ").strip()
+            self.name = str(input(f"\nEnter your name, player {totalPlayers}: ")).strip()
             sleep(0.5)
         else:
             self.name = str(name)
-            if self.name == 'PLAYER1-BOT':
-                self.bot = True
-                self.namePlayer()
         
         if self.name in playerNames:
             print(f"Name already taken. Please choose another name.")
