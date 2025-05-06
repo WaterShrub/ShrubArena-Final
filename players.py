@@ -17,20 +17,32 @@ enemyNames = ("Bob", "Leonidas", "Boss-man", "One-eyed Duck", "Calzoni",
 playerNames = []
 totalPlayers = 0
 
+REPLAYCHOICES = {'1' : 'Play again vs same enemy', 
+                '2' : 'Play again vs new enemy',
+                '3' : 'Exit'}
+
 #Enter new weapons below this line:
 
+WEAPON_DAGGER = {'name' : 'dagger',
+                'damage' : 3, 
+                'speed' : 10}
 WEAPON_SWORD = {'name' : 'sword', 
                 'damage' : 5, 
                 'speed' : 7}
 WEAPON_AXE = {'name' : 'axe', 
               'damage' : 7, 
               'speed' : 4}
+WEAPON_GREATAXE = {'name' : 'great axe',
+                  'damage' : 10, 
+                  'speed' : 2}
 WEAPONS = {'1' : WEAPON_SWORD, 
-           '2' : WEAPON_AXE}
+           '2' : WEAPON_AXE,
+           '3' : WEAPON_DAGGER,
+           '4' : WEAPON_GREATAXE}
 
 MOVES = {'1' : 'Attack', 
          '2' : 'Block',
-         '3' : 'Potion'}
+         '3' : 'Health Potion'}
 
 class Player:
     def  __init__(self, name = '', bot = False):
@@ -51,18 +63,17 @@ class Player:
         playerNames.append(self.name)
 
         self.bot = bot
-        if self.bot:
-            self.weapon = self.weaponSelect(str(randint(1,len(WEAPONS))))
-        else:
-            self.weapon = self.weaponSelect()
+        #self.weapon = self.weaponSelect()
         self.health = PLAYER_START_HEALTH
         self.maxHealth = PLAYER_MAX_HEALTH 
         self.wins = 0
-
+        self.replay = '3'
         #Move flags
         self.attacking = False
         self.blocking = False
         self.healing = False
+
+        self.weaponSelect()
 
         if not bot:
             print(f"Welcome, {self.name}!")
@@ -72,25 +83,26 @@ class Player:
     # the choice in the player dictionary. If the player
     # already knows their choice, they can supply that choice
     # at function call as a str.
-    def weaponSelect(self, weaponSelection = '-1'):
-        weaponSelection = str(weaponSelection)
+    def weaponSelect(self):
         global WEAPONS
 
         #Default selection, requests choice from terminal
-        if weaponSelection not in WEAPONS:
+        if not self.bot:
             print(f"\n{self.name}, select your weapon: \n"\
-                  "**Choices hidden for privacy in 2-player situations.")
+                  "**Choices hidden for privacy.")
             for number, weapon in WEAPONS.items():
                 print(f"{number}) {str(weapon['name']).title()} - {weapon['damage']} damage and {weapon['speed']} speed")
             weaponSelection = getpass("").strip()
-
+        else:
+            weaponSelection = str(randint(1,len(WEAPONS)))
         while weaponSelection not in WEAPONS:
             print("Invalid input.")
             weaponSelection = getpass("Please enter the number corresponding to your weapon choice: ").strip()
         sleep(0.5)
 
         logging.debug(f"{self.name} chose the {WEAPONS[weaponSelection]['name']}")
-        return WEAPONS[weaponSelection]
+        self.weapon = WEAPONS[weaponSelection]
+        return 
 
     #Checks if player is alive or dead.
     def isDead(self):
@@ -100,18 +112,19 @@ class Player:
    #Requests input from the player to determine their next move.
     #If the player already knows their choice, they can supply 
     # that choice at function call as a str.
-    def moveSelect(self, choice = '0'):
-        choice = str(choice)
+    def moveSelect(self):
         global MOVES
 
         #Default selection, requests choice from terminal
-        if choice not in MOVES:
+        if not self.bot:
             print(f"{self.name}, choose your next move:\n"\
-                  "**Choices hidden for privacy in 2-player situations.")
+                  "**Choices hidden for privacy.")
             for number, move in MOVES.items():
                 print(f"{number}) {move}")
             choice = str(getpass("").strip())
             print()
+        else:
+            choice = str(randint(1,len(MOVES)))
 
         while choice not in MOVES:
             print("Invalid input.")
@@ -152,15 +165,13 @@ class Player:
 
     #Asks user if they would like to replay.
     #Returns int choice
-    def replayChoice():
-        CHOICES = {'1' : 'Play again vs same enemy', 
-                    '2' : 'Play again vs new enemy',
-                    '3' : 'Exit'}
+    def replayChoice(self):
+        logging.debug("Requesting replay choice")
+        
         print("Would you like to:")
-        for number, choice in MOVES.items():
+        for number, choice in REPLAYCHOICES.items():
                 print(f"{number}) {choice}")
-        choice = input().strip()
-        while choice not in CHOICES:
+        self.replay = str(input().strip())
+        while self.replay not in REPLAYCHOICES:
             print("Invalid input.")
-            choice = input("Please enter the number corresponding to your choice: ").strip()
-        return choice
+            self.replay = str(input("Please enter the number corresponding to your choice: ").strip())

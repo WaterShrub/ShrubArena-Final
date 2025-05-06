@@ -64,10 +64,11 @@ __________________________________
 # attack sequence
 def move(player1, player2):
     logging.debug("Starting attack sequence")
+    #Players chose health potions
     if player1.healing:
-        player1.heal()
+        player1.heal(randint(1,6))
     if player2.healing:
-        player2.heal()
+        player2.heal(randint(1,6))
 
     #Both platers attack
     if player1.attacking and player2.attacking:
@@ -104,12 +105,12 @@ def move(player1, player2):
 
     #Player1 attacks, player2 blocks/heals
     elif player1.attacking and not player2.attacking:
-        print(f"{player1.name} attacked {player2.name}:")
+        print(f"{player1.name} attacked {player2.name}!")
         attack(player1, player2)
 
     #Only enemy attacks
     elif player2.attacking and not player1.attacking:
-        print(f"{player2.name} attacked {player1.name}:")
+        print(f"{player2.name} attacked {player1.name}!")
         attack(player2, player1)
 
     #Both block
@@ -117,8 +118,9 @@ def move(player1, player2):
         print(f"Neither {player1.name} or {player2.name} attacked.\n") 
 
     sleep(0.5)
-    print(f"\n{player1.name}'s health is: {player1.health}")
-    print(f"\n{player2.name}'s health is: {player2.health}")
+    if not player1.isDead() and not player2.isDead():
+        print(f"\n{player1.name}'s health is: {player1.health}")
+        print(f"{player2.name}'s health is: {player2.health}")
     printBuffer() 
     sleep(1.2)
 
@@ -141,18 +143,18 @@ def attack(attacker, defender):
 
         #40% chance for block to parry
         if defender.blocking and blockChance >= 4:
+            attacker.damage()
+            print(f"{defender.name} parried the attack! Careful, {attacker.name}!")
             defender.heal()
-            attacker.damge()
-            print(f"{defender.name} parried the attack! Careful, {attacker.name}!\n")
         
         #20% chance for block to block full damage
         elif defender.blocking and blockChance >=2:
-            print(f"{defender.name} fully blocked the attack!\n")
+            print(f"{defender.name} fully blocked the attack!")
 
         #40% chance for block to block partial damage
         elif defender.blocking:
+            print(f"{defender.name} partially blocked the attack and still lost some health!")
             defender.damage(round(attacker.weapon['damage'] * .5, None))
-            print(f"{defender.name} partially blocked the attack and still lost some health!\n")
 
         #No block, deals full damage
         else:
@@ -166,6 +168,9 @@ def determineWinner(player1, player2):
         winner = player2
     else:
         winner = player1
-    print(f"The winner is {winner.name}!")
+    print("The winner is...... ", end="", flush=True)
+    sleep(1.5)
+    print(f"{winner.name}!")
+    sleep(1)
     logging.debug(f"Winner: {winner.name}")
     winner.wins += 1

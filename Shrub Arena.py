@@ -65,19 +65,20 @@ try:
         logging.debug("Creating player 2")
         if player2Chocie == '1':
             player2 = pl.Player(pl.enemyNames[randint(0, len(pl.enemyNames) - 1)], True)
-            print(f"Hello, {player1.name}! Your enemy is {player2.name}.\n")
+            print(f"{player1.name}, your enemy is {player2.name}.\n")
         else:
             player2 = pl.Player()
             sleep(0.2)
-
-        print(f"\n{player1.name} chose the {player1.weapon['name']}.")
-        print(f"{player2.name} chose the {player2.weapon['name']}.")
-        sleep(1)
 
         #Main Game Loop
         logging.debug("Starting main game loop")
         playGameCurrentPlayers = True
         while playGameCurrentPlayers:
+            playGameCurrentPlayers = True
+            print(f"\n{player1.name} chose the {player1.weapon['name']}.")
+            print(f"{player2.name} chose the {player2.weapon['name']}.")
+            sleep(1)
+
             #Play until a players health <= 0
             print(f"\nAll players are starting with {pl.PLAYER_START_HEALTH} health.")
             print("*-" * 10 + "*")
@@ -85,7 +86,7 @@ try:
                 player1Move = player1.moveSelect()
                 
                 if player2.bot:
-                    player2Move = player2.moveSelect(str(randint(1,len(pl.MOVES))))
+                    player2Move = player2.moveSelect()
                 else:
                     player2Move = player2.moveSelect()
 
@@ -97,13 +98,16 @@ try:
             logging.debug("Winner determined")
 
             #Display wins and ask to replay
-            print(f"\nYour total wins: {player1.wins}")
-            replay = fn.replayChoice()
+            print(f"\n{player1.name}'s total wins: {player1.wins}")
+            print(f"{player2.name}'s total wins: {player2.wins}")
+            fn.printBuffer()
+            player1.replayChoice()
 
-            if replay == '3':
+            if player1.replay == '3':
+                playGameCurrentPlayers = False
                 playGame = False
             else:
-                if replay == '2':
+                if player1.replay == '2':
                     logging.debug("Replaying with new player")
                     playGameCurrentPlayers = False
                 else:
@@ -113,6 +117,12 @@ try:
                 print("___________________________")
                 sleep(1)
                 player1.weaponSelect()
+                player1.health = pl.PLAYER_START_HEALTH
+                if player1.replay == '1':
+                    player2.health = pl.PLAYER_START_HEALTH
+                    player2.weaponSelect()
+                else:
+                    pl.totalPlayers -= 1
 
     #End game
     if player1.wins > 1:
