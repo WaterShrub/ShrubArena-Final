@@ -1,0 +1,34 @@
+2025-05-05 15:28:53,426 - CRITICAL - Missing players.py
+2025-05-05 15:44:34,951 - DEBUG - Starting main game loop
+2025-05-05 15:44:34,953 - DEBUG - Creating players
+2025-05-05 15:44:34,954 - DEBUG - Selecting weapons
+2025-05-05 15:54:11,857 - DEBUG - Starting main game loop
+2025-05-05 15:54:11,857 - DEBUG - Creating players
+2025-05-05 15:54:11,858 - DEBUG - Selecting weapons
+2025-05-05 15:56:52,507 - DEBUG - Starting main game loop
+2025-05-05 15:56:52,508 - DEBUG - Creating players
+2025-05-05 15:56:52,508 - DEBUG - Selecting weapons
+2025-05-05 15:57:12,038 - DEBUG - Winner determined
+Player 1: This - 0 health
+Player 2: A chocolate chip - 13 health
+
+2025-05-05 15:57:12,040 - DEBUG - None
+2025-05-05 19:41:38,924 - DEBUG - Starting main game loop
+2025-05-05 19:41:39,116 - DEBUG - Creating players
+2025-05-05 19:41:39,116 - DEBUG - Selecting weapons
+2025-05-05 19:41:45,210 - DEBUG - Starting attack sequence
+2025-05-05 19:41:45,211 - DEBUG - Block chance: 1
+2025-05-05 19:41:45,211 - DEBUG - Block chance: 1
+2025-05-05 19:41:46,912 - DEBUG - Starting attack sequence
+2025-05-05 19:41:46,912 - DEBUG - Block chance: 5
+2025-05-05 19:41:46,912 - DEBUG - Block chance: 5
+2025-05-05 19:41:49,209 - DEBUG - Starting attack sequence
+2025-05-05 19:41:49,209 - DEBUG - Block chance: 1
+2025-05-05 19:41:54,531 - DEBUG - Starting attack sequence
+2025-05-05 19:41:54,531 - DEBUG - Block chance: 2
+2025-05-05 19:41:54,531 - DEBUG - Block chance: 1
+2025-05-05 19:41:56,233 - DEBUG - Winner: Test
+2025-05-05 19:41:56,233 - DEBUG - Winner determined
+Player 1: Test - 4 health
+Player 2: Dev - 0 health
+
