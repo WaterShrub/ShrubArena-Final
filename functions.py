@@ -36,8 +36,8 @@ __________________________________
     You have four choices for weaponry:
     The sword deals a moderate amount of damage (5) but is fast.
     The axe deals a substansial amount of damage (7) but takes more time to swing. 
-    The dagger deals a small amount of damage (3) but is very fast. When attacking, it hits twice. 
-        The second hit is not blocked by shields.
+    The dagger deals a small amount of damage (3) but is very fast. When attacking, 1/5 chance
+        to hit twice. The second hit is not blocked by shields.
     The greataxe deals a large amount of damage (10) but is very slow. After attacking, your next turn
         must block.
 
@@ -176,7 +176,10 @@ def attack(attacker, defender):
         #No block, deals full damage
         else:
             defender.damage(attacker.weapon['damage'])
-        if attacker.weapon['name'] == 'dagger':
+
+        #Second hit from dagger
+        if attacker.weapon['name'] == 'dagger' and randint(0,4) > 0:
+            print(f'{attacker.name} hit twice!')
             defender.damage(attacker.weapon['damage'])
     return
 

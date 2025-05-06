@@ -122,10 +122,10 @@ try:
                 print("___________________________")
                 sleep(1)
 
-                #Reset player1 variables
-                player1.resetPlayer()
+                #Reset player variables
+                player1.resetPlayerStats()
                 if player1.replay == '1':
-                    player2.resetPlayer()
+                    player2.resetPlayerStats()
                 else:
                     pl.totalPlayers -= 1
 
