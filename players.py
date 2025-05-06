@@ -6,6 +6,12 @@ logging.basicConfig(filename='ShrubArena.log',
 from random import randint
 from time import sleep
 from getpass import getpass
+try:
+    import functions as fn
+except:
+    logging.critical("Missing function.py")
+    print("Missing functions.py")
+    exit()
 
 #Game constants/variables
 PLAYER_START_HEALTH = 25
@@ -57,10 +63,8 @@ class Player:
 
         #Defines self.name
         self.namePlayer(name)
-        #Defines self.health, self.maxHealth, self.poisoned, and self.poisonedTurns
+        #Defines self.health, self.maxHealth, self.poisoned, self.poisonedTurns, and self.weapon
         self.resetPlayerStats()
-        #Defines self.weapon
-        self.weaponSelect()
         #Defines self.attacking, self.blocking, self.healing, and self.poisoning
         self.resetPlayerFlags()
 
@@ -99,6 +103,7 @@ class Player:
         self.maxHealth = PLAYER_MAX_HEALTH 
         self.poisoned = False
         self.poisonedTurns = 0
+        self.weaponSelect()
         logging.debug(f"{self.name} has had stats reset.")
 
     #Resets player stats for new game
@@ -140,6 +145,7 @@ class Player:
             self.cooldown = False
             print(f"{self.name}, your weapon is on cooldown. You must block.")
             logging.debug(f"{self.name} is on cooldown. Blocking.")
+            sleep(0.5)
         elif not self.bot:
             print(f"{self.name}, choose your next move:")
             for number, move in MOVES.items():
@@ -208,6 +214,7 @@ class Player:
                 logging.debug(f"{self.name} is no longer poisoned!")
             if self.health <= 0:
                 self.health = 1
+            fn.stringCount = True
 
     #Verifies that player has legal health value.
     def checkHealth(self):
@@ -230,6 +237,7 @@ class Player:
                 self.poisoned = False
                 print(f"{self.name} drank a health potion and is no longer poisoned!")
                 logging.debug(f"{self.name} drank a health potion and is no longer poisoned!")
+            fn.stringCount = True
     
     #Checks if a player is applying poison and applies if so
     def isPoisoning(self, defender):
@@ -238,5 +246,6 @@ class Player:
             logging.debug(f"{self.name} poisoned {defender.name}")
             defender.poisoned = True
             defender.poisonedTurns = 2
+            fn.stringCount = True
 
     

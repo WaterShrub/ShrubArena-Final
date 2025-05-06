@@ -89,12 +89,7 @@ try:
             print("*-" * 10 + "*")
             while not player1.isDead() and not player2.isDead():
                 player1Move = player1.moveSelect()
-                
-                if player2.bot:
-                    player2Move = player2.moveSelect()
-                else:
-                    player2Move = player2.moveSelect()
-
+                player2Move = player2.moveSelect()
                 fn.move(player1, player2)
 
             #Determine winner

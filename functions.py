@@ -78,24 +78,32 @@ __________________________________
     return
 
 #Determines outcomes of player move choices and resets move flags
+stringCount = False
 def move(player1, player2):
     logging.debug("Starting attack sequence")
+    global stringCount
     print()
 
     #Players chose to poison
+    stringCount = False
     player1.isPoisoning(player2)
     player2.isPoisoning(player1)
-    print()
+    if stringCount: 
+        print()
 
     #Players chose health potions
+    stringCount = False
     player1.isDrinkingPotion()
     player2.isDrinkingPotion()
-    print()
+    if stringCount: 
+        print()
 
     #Poison damage is applied
+    stringCount = False
     player1.poisonDamage()
     player2.poisonDamage()
-    print()
+    if stringCount: 
+        print()
 
     #Both platers attack
     if player1.attacking and player2.attacking:
@@ -116,12 +124,12 @@ def move(player1, player2):
     else:
         print(f"Neither {player1.name} or {player2.name} attacked.\n") 
 
-    sleep(0.5)
+    sleep(2)
     if not player1.isDead() and not player2.isDead():
         print(f"\n{player1.name}'s health is: {player1.health}")
         print(f"{player2.name}'s health is: {player2.health}")
     printBuffer() 
-    sleep(1.2)
+    sleep(1)
 
     #Reset move flags
     player1.resetPlayerFlags()
@@ -157,7 +165,7 @@ def determineOrder(player1, player2):
     print()
     attack(second, first)
     print()
-    
+
 #Deals damage to defender based on attackers weapon and defenders blocking state
 def attack(attacker, defender):
     if not defender.isDead():
