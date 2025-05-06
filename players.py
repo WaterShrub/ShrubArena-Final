@@ -25,7 +25,7 @@ REPLAYCHOICES = {'1' : 'Play again vs same enemy',
 #Enter new weapons below this line:
 
 WEAPON_DAGGER = {'name' : 'dagger',
-                'damage' : 2, 
+                'damage' : 3, 
                 'speed' : 10}
 WEAPON_SWORD = {'name' : 'sword', 
                 'damage' : 5, 
@@ -35,7 +35,8 @@ WEAPON_AXE = {'name' : 'axe',
               'speed' : 4}
 WEAPON_GREATAXE = {'name' : 'great axe',
                   'damage' : 10, 
-                  'speed' : 2}
+                  'speed' : 2,
+                  'cooldown': False}
 WEAPONS = {'1' : WEAPON_SWORD, 
            '2' : WEAPON_AXE,
            '3' : WEAPON_DAGGER,
@@ -114,10 +115,10 @@ class Player:
 
         #Default selection, requests choice from terminal
         if not self.bot:
-            print(f"\n{self.name}, select your weapon: \n"\
-                  "**Choices hidden for privacy.")
+            print(f"\n{self.name}, select your weapon:")
             for number, weapon in WEAPONS.items():
                 print(f"{number}) {str(weapon['name']).title()} - {weapon['damage']} damage and {weapon['speed']} speed")
+            print("**Selection hidden for privacy.")
             weaponSelection = getpass("").strip()
         else:
             weaponSelection = str(randint(1,len(WEAPONS)))
@@ -134,11 +135,16 @@ class Player:
         global MOVES
 
         #Requests choice from terminal if not bot
-        if not self.bot:
-            print(f"{self.name}, choose your next move:\n"\
-                  "**Choices hidden for privacy.")
+        if self.weapon['name'] == 'great axe' and self.weapon['cooldown']:
+            choice = '2'
+            self.weapon['cooldown'] = False
+            print(f"{self.name}, your weapon is on cooldown. You must block.")
+            logging.debug(f"{self.name} is on cooldown. Blocking.")
+        elif not self.bot:
+            print(f"{self.name}, choose your next move:")
             for number, move in MOVES.items():
                 print(f"{number}) {move}")
+            print("**Selection hidden for privacy.")
             choice = str(getpass("").strip())
             print()
         else:
@@ -152,6 +158,9 @@ class Player:
         match choice:
             case '1':
                 self.attacking = True
+                if self.weapon['name'] == 'great axe':
+                    self.weapon['cooldown'] = True
+                    logging.debug(f"{self.name} is now on cooldown.")
             case '2':
                 self.blocking = True
             case '3':
@@ -216,7 +225,11 @@ class Player:
    #Checks if player is drinking a potion and heals if so
     def isDrinkingPotion(self):
         if self.healing:
-            self.heal(randint(1,6))
+            self.heal(randint(2,6))
+        if randint(1,4) == 1 and self.poisoned:
+            self.poisoned = False
+            print(f"{self.name} drank a health potion and is no longer poisoned!")
+            logging.debug(f"{self.name} drank a health potion and is no longer poisoned!")
     
     #Checks if a player is applying poison and applies if so
     def isPoisoning(self, defender):
