@@ -4070,3 +4070,175 @@ Exiting game.
 2025-05-05 23:26:53,696 - DEBUG - Winner determined
 2025-05-05 23:26:53,696 - DEBUG - Requesting replay choice
 2025-05-05 23:26:55,353 - DEBUG - Player exited game
+2025-05-05 23:48:56,515 - DEBUG - Creating player 1
+2025-05-05 23:49:01,308 - DEBUG - Justin chose the axe
+2025-05-05 23:49:01,308 - DEBUG - Justin has been created.
+2025-05-05 23:49:01,509 - DEBUG - Starting game with new player
+2025-05-05 23:49:03,143 - DEBUG - Creating player 2
+2025-05-05 23:49:06,375 - DEBUG - Monica chose the sword
+2025-05-05 23:49:06,375 - DEBUG - Monica has been created.
+2025-05-05 23:49:06,576 - DEBUG - Starting main game loop
+2025-05-05 23:49:07,577 - DEBUG - Checked if Justin is dead.
+2025-05-05 23:49:07,577 - DEBUG - Checked if Monica is dead.
+2025-05-05 23:49:09,591 - DEBUG - Justin chose Inflict Poision
+2025-05-05 23:49:11,992 - DEBUG - Monica chose Block
+2025-05-05 23:49:11,992 - DEBUG - Starting attack sequence
+2025-05-05 23:49:12,492 - DEBUG - Checked if Justin is dead.
+2025-05-05 23:49:12,492 - DEBUG - Checked if Monica is dead.
+2025-05-05 23:49:13,693 - DEBUG - Checked if Justin is dead.
+2025-05-05 23:49:13,693 - DEBUG - Checked if Monica is dead.
+2025-05-05 23:52:51,782 - DEBUG - Player exited game
+2025-05-05 23:52:54,019 - DEBUG - Creating player 1
+2025-05-05 23:52:56,931 - DEBUG - 1 chose the great axe
+2025-05-05 23:52:56,931 - DEBUG - 1 has been created.
+2025-05-05 23:52:57,132 - DEBUG - Starting game with new player
+2025-05-05 23:52:59,061 - DEBUG - Creating player 2
+2025-05-05 23:53:04,523 - DEBUG - 2 chose the axe
+2025-05-05 23:53:04,523 - DEBUG - 2 has been created.
+2025-05-05 23:53:04,724 - DEBUG - Starting main game loop
+2025-05-05 23:53:05,725 - DEBUG - Checked if 1 is dead.
+2025-05-05 23:53:05,725 - DEBUG - Checked if 2 is dead.
+2025-05-05 23:53:09,718 - DEBUG - 1 chose Inflict Poision
+2025-05-05 23:53:13,781 - DEBUG - 2 chose Block
+2025-05-05 23:53:13,782 - DEBUG - Starting attack sequence
+2025-05-05 23:53:14,283 - DEBUG - Checked if 1 is dead.
+2025-05-05 23:53:14,283 - DEBUG - Checked if 2 is dead.
+2025-05-05 23:53:15,484 - DEBUG - Checked if 1 is dead.
+2025-05-05 23:53:15,484 - DEBUG - Checked if 2 is dead.
+2025-05-05 23:53:19,634 - DEBUG - 1 chose Inflict Poision
+2025-05-05 23:53:21,305 - DEBUG - 2 chose Health Potion
+2025-05-05 23:53:21,306 - DEBUG - Starting attack sequence
+2025-05-05 23:53:21,306 - DEBUG - 2 healed for 4 health!
+2025-05-05 23:53:21,306 - DEBUG - Checked 2 for legal health values.
+2025-05-05 23:53:21,807 - DEBUG - Checked if 1 is dead.
+2025-05-05 23:53:21,807 - DEBUG - Checked if 2 is dead.
+2025-05-05 23:53:23,008 - DEBUG - Checked if 1 is dead.
+2025-05-05 23:53:23,008 - DEBUG - Checked if 2 is dead.
+2025-05-05 23:53:31,166 - DEBUG - 1 chose Attack
+2025-05-05 23:53:31,637 - DEBUG - 2 chose Attack
+2025-05-05 23:53:31,637 - DEBUG - Starting attack sequence
+2025-05-05 23:53:31,637 - DEBUG - Checked if 1 is dead.
+2025-05-05 23:53:31,637 - DEBUG - 2 is attacking 1
+2025-05-05 23:53:31,637 - DEBUG - Block chance: 4
+2025-05-05 23:53:31,637 - DEBUG - 1 took 7 damage!
+2025-05-05 23:53:31,637 - DEBUG - Checked 1 for legal health values.
+2025-05-05 23:53:31,637 - DEBUG - Checked if 2 is dead.
+2025-05-05 23:53:31,638 - DEBUG - 1 is attacking 2
+2025-05-05 23:53:31,638 - DEBUG - Block chance: 5
+2025-05-05 23:53:31,638 - DEBUG - 2 took 10 damage!
+2025-05-05 23:53:31,638 - DEBUG - Checked 2 for legal health values.
+2025-05-05 23:53:32,138 - DEBUG - Checked if 1 is dead.
+2025-05-05 23:53:32,138 - DEBUG - Checked if 2 is dead.
+2025-05-05 23:53:33,339 - DEBUG - Checked if 1 is dead.
+2025-05-05 23:53:33,339 - DEBUG - Checked if 2 is dead.
+2025-05-05 23:53:48,702 - DEBUG - 1 chose Inflict Poision
+2025-05-05 23:53:49,382 - DEBUG - 2 chose Inflict Poision
+2025-05-05 23:53:49,382 - DEBUG - Starting attack sequence
+2025-05-05 23:53:49,883 - DEBUG - Checked if 1 is dead.
+2025-05-05 23:53:49,883 - DEBUG - Checked if 2 is dead.
+2025-05-05 23:53:51,083 - DEBUG - Checked if 1 is dead.
+2025-05-05 23:53:51,083 - DEBUG - Checked if 2 is dead.
+2025-05-05 23:53:52,289 - DEBUG - 1 chose Inflict Poision
+2025-05-05 23:53:52,855 - DEBUG - 2 chose Inflict Poision
+2025-05-05 23:53:52,855 - DEBUG - Starting attack sequence
+2025-05-05 23:53:53,356 - DEBUG - Checked if 1 is dead.
+2025-05-05 23:53:53,356 - DEBUG - Checked if 2 is dead.
+2025-05-05 23:53:54,557 - DEBUG - Checked if 1 is dead.
+2025-05-05 23:53:54,557 - DEBUG - Checked if 2 is dead.
+2025-05-05 23:53:55,676 - DEBUG - 1 chose Inflict Poision
+2025-05-05 23:53:56,275 - DEBUG - 2 chose Inflict Poision
+2025-05-05 23:53:56,275 - DEBUG - Starting attack sequence
+2025-05-05 23:53:56,776 - DEBUG - Checked if 1 is dead.
+2025-05-05 23:53:56,776 - DEBUG - Checked if 2 is dead.
+2025-05-05 23:53:57,977 - DEBUG - Checked if 1 is dead.
+2025-05-05 23:53:57,977 - DEBUG - Checked if 2 is dead.
+2025-05-05 23:56:36,029 - DEBUG - Player exited game
+2025-05-05 23:56:38,143 - DEBUG - Creating player 1
+2025-05-05 23:56:41,947 - DEBUG - Justin chose the dagger
+2025-05-05 23:56:41,948 - DEBUG - Justin has been created.
+2025-05-05 23:56:42,149 - DEBUG - Starting game with new player
+2025-05-05 23:56:43,828 - DEBUG - Creating player 2
+2025-05-05 23:56:47,887 - DEBUG - Me chose the great axe
+2025-05-05 23:56:47,887 - DEBUG - Me has been created.
+2025-05-05 23:56:48,088 - DEBUG - Starting main game loop
+2025-05-05 23:56:49,090 - DEBUG - Checked if Justin is dead.
+2025-05-05 23:56:49,092 - DEBUG - Checked if Me is dead.
+2025-05-05 23:56:53,272 - DEBUG - Justin chose Inflict Poision
+2025-05-05 23:56:53,938 - DEBUG - Me chose Inflict Poision
+2025-05-05 23:56:53,939 - DEBUG - Starting attack sequence
+2025-05-05 23:56:53,939 - DEBUG - Justin poisoned Me
+2025-05-05 23:56:53,939 - DEBUG - Me poisoned Justin
+2025-05-05 23:56:53,939 - DEBUG - Justin took 3 damage!
+2025-05-05 23:56:53,939 - DEBUG - Checked Justin for legal health values.
+2025-05-05 23:56:53,940 - DEBUG - Me took 3 damage!
+2025-05-05 23:56:53,940 - DEBUG - Checked Me for legal health values.
+2025-05-05 23:56:54,440 - DEBUG - Checked if Justin is dead.
+2025-05-05 23:56:54,441 - DEBUG - Checked if Me is dead.
+2025-05-05 23:56:55,642 - DEBUG - Checked if Justin is dead.
+2025-05-05 23:56:55,642 - DEBUG - Checked if Me is dead.
+2025-05-05 23:57:20,271 - DEBUG - Justin chose Attack
+2025-05-05 23:57:21,288 - DEBUG - Me chose Block
+2025-05-05 23:57:21,288 - DEBUG - Starting attack sequence
+2025-05-05 23:57:21,288 - DEBUG - Me poisoned Justin
+2025-05-05 23:57:21,288 - DEBUG - Justin took 3 damage!
+2025-05-05 23:57:21,288 - DEBUG - Checked Justin for legal health values.
+2025-05-05 23:57:21,289 - DEBUG - Me took 3 damage!
+2025-05-05 23:57:21,289 - DEBUG - Checked Me for legal health values.
+2025-05-05 23:57:21,289 - DEBUG - Me is no longer poisoned!
+2025-05-05 23:57:21,289 - DEBUG - Checked if Me is dead.
+2025-05-05 23:57:21,289 - DEBUG - Justin is attacking Me
+2025-05-05 23:57:21,289 - DEBUG - Block chance: 4
+2025-05-05 23:57:21,289 - DEBUG - Justin took 3 damage!
+2025-05-05 23:57:21,289 - DEBUG - Checked Justin for legal health values.
+2025-05-05 23:57:21,289 - DEBUG - Me healed for 4 health!
+2025-05-05 23:57:21,290 - DEBUG - Checked Me for legal health values.
+2025-05-05 23:57:21,790 - DEBUG - Checked if Justin is dead.
+2025-05-05 23:57:21,790 - DEBUG - Checked if Me is dead.
+2025-05-05 23:57:22,991 - DEBUG - Checked if Justin is dead.
+2025-05-05 23:57:22,991 - DEBUG - Checked if Me is dead.
+2025-05-05 23:57:25,382 - DEBUG - Justin chose Attack
+2025-05-05 23:57:25,974 - DEBUG - Me chose Attack
+2025-05-05 23:57:25,974 - DEBUG - Starting attack sequence
+2025-05-05 23:57:25,974 - DEBUG - Justin poisoned Me
+2025-05-05 23:57:25,974 - DEBUG - Me poisoned Justin
+2025-05-05 23:57:25,974 - DEBUG - Justin took 3 damage!
+2025-05-05 23:57:25,974 - DEBUG - Checked Justin for legal health values.
+2025-05-05 23:57:25,974 - DEBUG - Me took 3 damage!
+2025-05-05 23:57:25,974 - DEBUG - Checked Me for legal health values.
+2025-05-05 23:57:25,976 - DEBUG - Checked if Me is dead.
+2025-05-05 23:57:25,976 - DEBUG - Justin is attacking Me
+2025-05-05 23:57:25,976 - DEBUG - Block chance: 2
+2025-05-05 23:57:25,976 - DEBUG - Me took 3 damage!
+2025-05-05 23:57:25,976 - DEBUG - Checked Me for legal health values.
+2025-05-05 23:57:25,976 - DEBUG - Checked if Justin is dead.
+2025-05-05 23:57:25,976 - DEBUG - Me is attacking Justin
+2025-05-05 23:57:25,976 - DEBUG - Block chance: 5
+2025-05-05 23:57:25,976 - DEBUG - Justin took 10 damage!
+2025-05-05 23:57:25,976 - DEBUG - Checked Justin for legal health values.
+2025-05-05 23:57:26,477 - DEBUG - Checked if Justin is dead.
+2025-05-05 23:57:26,478 - DEBUG - Checked if Me is dead.
+2025-05-05 23:57:27,679 - DEBUG - Checked if Justin is dead.
+2025-05-05 23:57:27,679 - DEBUG - Checked if Me is dead.
+2025-05-05 23:57:27,679 - DEBUG - Justin chose Attack
+2025-05-05 23:57:27,680 - DEBUG - Me chose Attack
+2025-05-05 23:57:27,680 - DEBUG - Starting attack sequence
+2025-05-05 23:57:27,680 - DEBUG - Me poisoned Justin
+2025-05-05 23:57:27,680 - DEBUG - Justin took 3 damage!
+2025-05-05 23:57:27,680 - DEBUG - Checked Justin for legal health values.
+2025-05-05 23:57:27,680 - DEBUG - Me took 3 damage!
+2025-05-05 23:57:27,680 - DEBUG - Checked Me for legal health values.
+2025-05-05 23:57:27,680 - DEBUG - Me is no longer poisoned!
+2025-05-05 23:57:27,680 - DEBUG - Checked if Me is dead.
+2025-05-05 23:57:27,680 - DEBUG - Justin is attacking Me
+2025-05-05 23:57:27,680 - DEBUG - Block chance: 1
+2025-05-05 23:57:27,680 - DEBUG - Me took 3 damage!
+2025-05-05 23:57:27,680 - DEBUG - Checked Me for legal health values.
+2025-05-05 23:57:27,680 - DEBUG - Checked if Justin is dead.
+2025-05-05 23:57:28,181 - DEBUG - Checked if Justin is dead.
+2025-05-05 23:57:29,382 - DEBUG - Checked if Justin is dead.
+2025-05-05 23:57:29,382 - DEBUG - Determining winner
+2025-05-05 23:57:29,382 - DEBUG - Checked if Justin is dead.
+2025-05-05 23:57:31,884 - DEBUG - Winner: Me
+2025-05-05 23:57:31,884 - DEBUG - Winner determined
+2025-05-05 23:57:31,884 - DEBUG - Requesting replay choice
+2025-05-05 23:57:37,088 - DEBUG - Player exited game

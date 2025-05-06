@@ -71,6 +71,37 @@ def move(player1, player2):
     if player2.healing:
         player2.heal(randint(1,6))
 
+    #Players chose to poison
+    if player1.poisoning and randint(1,10) < 10 and not player2.blocking:
+        print(f"{player1.name} poisoned {player2.name}!")
+        logging.debug(f"{player1.name} poisoned {player2.name}")
+        player2.poisoned = True
+        player2.poisonedTurns = 2
+        
+    if player2.poisoning and randint(1,10) < 10 and not player1.blocking:
+        print(f"{player2.name} poisoned {player1.name}!")
+        logging.debug(f"{player2.name} poisoned {player1.name}")
+        player1.poisoned = True
+        player1.poisonedTurns = 2
+
+    #Poison damage
+    if player1.poisoned:
+        print(f"{player1.name} is poisoned!")
+        player1.damage()
+        player1.poisonedTurns -= 1
+        if player1.poisonedTurns == 0:
+            player1.poisoned = False
+            print(f"{player1.name} is no longer poisoned!")
+            logging.debug(f"{player1.name} is no longer poisoned!")
+    if player2.poisoned:
+        print(f"{player2.name} is poisoned!")
+        player2.damage()
+        player2.poisonedTurns -= 1
+        if player2.poisonedTurns == 0:
+            player2.poisoned = False
+            print(f"{player2.name} is no longer poisoned!")
+            logging.debug(f"{player2.name} is no longer poisoned!")
+
     #Both platers attack
     if player1.attacking and player2.attacking:
         print(f"{player1.name} and {player2.name} attacked each other!")

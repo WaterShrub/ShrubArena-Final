@@ -43,7 +43,8 @@ WEAPONS = {'1' : WEAPON_SWORD,
 
 MOVES = {'1' : 'Attack', 
          '2' : 'Block',
-         '3' : 'Health Potion'}
+         '3' : 'Health Potion',
+         '4' : 'Inflict Poision'}
 
 class Player:
     def  __init__(self, name = '', bot = False):
@@ -69,10 +70,13 @@ class Player:
         self.maxHealth = PLAYER_MAX_HEALTH 
         self.wins = 0
         self.replay = '3'
+        self.poisoned = False
+        self.poisonedTurns = 0
         #Move flags
         self.attacking = False
         self.blocking = False
         self.healing = False
+        self.poisoning = False
 
         self.weaponSelect()
 
@@ -137,6 +141,8 @@ class Player:
             self.blocking = True
         elif str(choice) == '3':
             self.healing = True
+        elif str(choice) == '4':
+            self.poisoning = True
 
         logging.debug(f"{self.name} chose {MOVES[choice]}")
         return
