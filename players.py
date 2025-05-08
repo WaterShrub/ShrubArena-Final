@@ -197,8 +197,12 @@ class Player:
         self.checkHealth()
 
     #Damages player based on supplied amount. Defaults a random value between 1 and 3.
-    def damage(self, amount = randint(1,3)):
-        self.health -= amount
+    def damage(self, amount = randint(1,3), critChance = False):
+        if critChance and randint(1,20) == 20:
+            print("CRITICAL HIT!")
+            self.health -= round(amount * 1.2, None)
+        else:
+            self.health -= amount
         print(f"{self.name} took {amount} damage!")
         logging.debug(f"{self.name} took {amount} damage!")
         self.checkHealth()

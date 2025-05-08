@@ -46,6 +46,7 @@ __________________________________
     If a weapon is faster than the opponents, they will always attack first.
     If both opponents have the same weapon speed, a random draw determines 
         who goes first. If opponent two is a bot, this draw favors the player.
+    There is a 1/20 chance to deal critical damage when attacking.
 
 4) Blocking
     When you block an attack, 1 of 3 things can happen.
@@ -186,16 +187,16 @@ def attack(attacker, defender):
         #40% chance for block to block partial damage
         elif defender.blocking:
             print(f"{defender.name} partially blocked the attack and still lost some health!")
-            defender.damage(round(attacker.weapon['damage'] * .5, None))
+            defender.damage(round(attacker.weapon['damage'] * .5, None), True)
 
         #No block, deals full damage
         else:
-            defender.damage(attacker.weapon['damage'])
+            defender.damage(attacker.weapon['damage'], True)
 
         #Second hit from dagger
         if attacker.weapon['name'] == 'dagger' and randint(0,4) > 0:
             print(f'{attacker.name} hit twice!')
-            defender.damage(attacker.weapon['damage'])
+            defender.damage(attacker.weapon['damage'], True)
     return
 
 #Takes 2 players and determines which one has a positive health

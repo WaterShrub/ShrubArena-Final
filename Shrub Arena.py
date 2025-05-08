@@ -58,11 +58,14 @@ try:
     while playGame:
         #initiallize player2
         if not player1.bot:
-            player2Choice = input(
-                              "\nWould you like to play againtst:\n" \
-                               "1) A computer\n" \
-                               "2) Another human\n").strip()
-            sleep(0.5)
+                player2Choice = input(
+                                "\nWould you like to play againtst:\n" \
+                                "1) A computer\n" \
+                                "2) Another human\n").strip()
+                while str(player2Choice) != '1' and str(player2Choice) != '2':
+                    player2Choice = input("Invalid choice. \nPlease enter the number corresponding to your choice: ")
+                sleep(0.5)
+
         else:
             logging.debug("Battle will be bots only")
             player2Choice = '1'
@@ -71,7 +74,7 @@ try:
         if player2Choice == '1':
             player2 = pl.Player(bot = True)
             print(f"{player1.name}, your enemy is {player2.name}.\n")
-        else:
+        else :
             player2 = pl.Player()
             sleep(0.2)
 
