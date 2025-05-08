@@ -5,6 +5,7 @@ logging.basicConfig(filename='ShrubArena.log',
                     format='%(asctime)s - %(levelname)s - %(message)s')
 from random import randint
 from time import sleep
+from math import ceil
 from getpass import getpass
 try:
     import functions as fn
@@ -79,13 +80,13 @@ class Player:
             name = str(name).title() 
 
         if self.bot:
-            self.name = enemyNames[randint(0, len(enemyNames) - 1)]
-            name = self.name
+            name = enemyNames[randint(0, len(enemyNames) - 1)]
         elif name == '':
-            self.name = str(input(f"\nEnter your name, player {totalPlayers}: ")).strip().title()
-            sleep(0.5)
-        else:
-            self.name = str(name)
+            name = str(input(f"\nEnter your name, player {totalPlayers}: ")).strip()
+            if str(name).islower():
+                name = str(name).title()
+            sleep(0.5)  
+        self.name = str(name)
         
         if self.name == 'PLAYER1-BOT':
             self.bot = True
@@ -200,9 +201,9 @@ class Player:
     def damage(self, amount = randint(1,3), critChance = False):
         if critChance and randint(1,20) == 20:
             print("CRITICAL HIT!")
-            self.health -= round(amount * 1.2, None)
-        else:
-            self.health -= amount
+            logging.debug("Critical hit")
+            amount = ceil(amount * 1.2)
+        self.health -= amount
         print(f"{self.name} took {amount} damage!")
         logging.debug(f"{self.name} took {amount} damage!")
         self.checkHealth()
