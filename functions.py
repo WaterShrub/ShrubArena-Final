@@ -17,11 +17,11 @@ def printBuffer():
     return
 
 #Allows for sleep to be skipped by setting awake flag to True
-awake = False
+awake = True
 def doSleep(length):
     global awake
     if not awake:
-        doSleep(length)
+        sleep(length)
 
 #Asks if player would like to read the manual.
 # Prints game manual if requested. 
