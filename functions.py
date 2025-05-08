@@ -17,7 +17,7 @@ def printBuffer():
     return
 
 #Allows for sleep to be skipped by setting awake flag to True
-awake = True
+awake = False
 def doSleep(length):
     global awake
     if not awake:
