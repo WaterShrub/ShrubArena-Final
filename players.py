@@ -202,7 +202,7 @@ class Player:
         if critChance and randint(1,20) == 20:
             print("CRITICAL HIT!")
             logging.debug("Critical hit")
-            amount = ceil(amount * 1.2)
+            amount = ceil(amount * 1.35)
         self.health -= amount
         print(f"{self.name} took {amount} damage!")
         logging.debug(f"{self.name} took {amount} damage!")
