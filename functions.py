@@ -16,6 +16,13 @@ def printBuffer():
     print("*-" * 16 + "*") 
     return
 
+#Allows for sleep to be skipped by setting awake flag to True
+awake = False
+def doSleep(length):
+    global awake
+    if not awake:
+        doSleep(length)
+
 #Asks if player would like to read the manual.
 # Prints game manual if requested. 
 def printManual():
@@ -73,7 +80,7 @@ __________________________________
         clearScreen()
         print(manual) 
         logging.debug("Manual printed")      
-        sleep(2)
+        doSleep(2)
 
     printBuffer() 
     return
@@ -125,12 +132,12 @@ def move(player1, player2):
     else:
         print(f"Neither {player1.name} or {player2.name} attacked.\n") 
 
-    sleep(2)
+    doSleep(2)
     if not player1.isDead() and not player2.isDead():
         print(f"\n{player1.name}'s health is: {player1.health}")
         print(f"{player2.name}'s health is: {player2.health}")
     printBuffer() 
-    sleep(1)
+    doSleep(1)
 
     #Reset move flags
     player1.resetPlayerFlags()
@@ -207,9 +214,9 @@ def determineWinner(player1, player2):
     else:
         winner = player1
     print("The winner is...... ", end="", flush=True)
-    sleep(1.5)
+    doSleep(1.5)
     print(f"{winner.name}!")
-    sleep(1)
+    doSleep(1)
     logging.debug(f"Winner: {winner.name}")
     winner.wins += 1
 

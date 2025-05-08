@@ -22,7 +22,6 @@ import logging
 logging.basicConfig(filename='ShrubArena.log', 
                     level=logging.DEBUG, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
-from time import sleep
 from random import randint
 from sys import exit
 try:
@@ -45,12 +44,12 @@ try:
     print("Welcome to the Shrub Arena!")
     print("___________________________")
     fn.printManual()
-    sleep(0.3)
+    fn.doSleep(0.3)
 
     #Initialize player 1
     logging.debug("Creating player 1")
     player1 = pl.Player()
-    sleep(0.2)
+    fn.doSleep(0.2)
 
     #Starts game with new second player
     logging.debug("Starting game with new player")
@@ -64,7 +63,7 @@ try:
                                 "2) Another human\n").strip()
                 while str(player2Choice) != '1' and str(player2Choice) != '2':
                     player2Choice = input("Invalid choice. \nPlease enter the number corresponding to your choice: ")
-                sleep(0.5)
+                fn.doSleep(0.5)
 
         else:
             logging.debug("Battle will be bots only")
@@ -76,7 +75,7 @@ try:
             print(f"{player1.name}, your enemy is {player2.name}.\n")
         else :
             player2 = pl.Player()
-            sleep(0.2)
+            fn.doSleep(0.2)
 
         #Main Game Loop
         logging.debug("Starting main game loop")
@@ -85,7 +84,7 @@ try:
             playGameCurrentPlayers = True
             print(f"\n{player1.name} chose the {player1.weapon['name']}.")
             print(f"{player2.name} chose the {player2.weapon['name']}.")
-            sleep(1)
+            fn.doSleep(1)
 
             #Play until a players health <= 0
             print(f"\nAll players are starting with {pl.PLAYER_START_HEALTH} health.")
@@ -118,7 +117,7 @@ try:
                 fn.clearScreen()
                 print(f"Welcome Back to the Shrub Arena, {player1.name}!")
                 print("___________________________")
-                sleep(1)
+                fn.doSleep(1)
 
                 #Reset player variables
                 player1.resetPlayerStats()

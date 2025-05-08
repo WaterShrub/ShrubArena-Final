@@ -4,7 +4,6 @@ logging.basicConfig(filename='ShrubArena.log',
                     level=logging.DEBUG, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
 from random import randint
-from time import sleep
 from math import ceil
 from getpass import getpass
 try:
@@ -85,7 +84,7 @@ class Player:
             name = str(input(f"\nEnter your name, player {totalPlayers}: ")).strip()
             if str(name).islower():
                 name = str(name).title()
-            sleep(0.5)  
+            fn.doSleep(0.5)  
         self.name = str(name)
         
         if self.name == 'PLAYER1-BOT':
@@ -96,7 +95,7 @@ class Player:
                 print(f"Name already taken. Please choose another name.")
             logging.debug(f"{self.name} already exists. Requesting new name.")
             self.namePlayer()
-            sleep(0.5)
+            fn.doSleep(0.5)
         playerNames.append(self.name)
 
     #Resets player stats for new game
@@ -132,7 +131,7 @@ class Player:
         while weaponSelection not in WEAPONS:
             print("Invalid input.")
             weaponSelection = getpass("Please enter the number corresponding to your weapon choice: ").strip()
-        sleep(0.5)
+        fn.doSleep(0.5)
 
         logging.debug(f"{self.name} chose the {WEAPONS[weaponSelection]['name']}")
         self.weapon = WEAPONS[weaponSelection]
@@ -147,7 +146,7 @@ class Player:
             self.cooldown = False
             print(f"{self.name}, your weapon is on cooldown. You must block.")
             logging.debug(f"{self.name} is on cooldown. Blocking.")
-            sleep(0.5)
+            fn.doSleep(0.5)
         elif not self.bot:
             print(f"{self.name}, choose your next move:")
             for number, move in MOVES.items():
