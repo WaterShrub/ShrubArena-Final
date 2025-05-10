@@ -105,6 +105,7 @@ class Player:
         self.maxHealth = PLAYER_MAX_HEALTH 
         self.poisoned = False
         self.poisonedTurns = 0
+        self.cooldown = False
         self.weaponSelect()
         logging.debug(f"{self.name} has had stats reset.")
 
