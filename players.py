@@ -145,7 +145,7 @@ class Player:
         if self.cooldown:
             choice = '2'
             self.cooldown = False
-            print(f"{self.name}, your weapon is on cooldown. You must block.")
+            print(f"{self.name}, your weapon is on cooldown. You must block.\n")
             logging.debug(f"{self.name} is on cooldown. Blocking.")
             fn.doSleep(0.5)
         elif not self.bot:
@@ -226,6 +226,8 @@ class Player:
     def checkHealth(self):
         if self.health > self.maxHealth:
             self.health = self.maxHealth
+            print(f"{self.name} is over their health limit, resetting to {PLAYER_MAX_HEALTH}.")
+            logging.debug(f"{self.name} is over their health limit, resetting to {PLAYER_MAX_HEALTH}.")
         if self.health < 0:
             self.health = 0
         logging.debug(f"Checked {self.name} for legal health values.")
