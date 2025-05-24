@@ -52,7 +52,7 @@ WEAPONS = {'1' : WEAPON_SWORD,
 MOVES = {'1' : 'Attack', 
          '2' : 'Block',
          '3' : 'Health Potion',
-         '4' : 'Inflict Poision'}
+         '4' : 'Inflict Poison'}
 
 class Player:
     def  __init__(self, name = '', bot = False):
@@ -105,6 +105,7 @@ class Player:
         self.maxHealth = PLAYER_MAX_HEALTH 
         self.poisoned = False
         self.poisonedTurns = 0
+        self.cooldown = False
         self.weaponSelect()
         logging.debug(f"{self.name} has had stats reset.")
 
